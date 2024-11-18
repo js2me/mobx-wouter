@@ -29,7 +29,7 @@
     "url": "git://github.com/js2me/mobx-wouter"
   },
   "dependencies": {
-    "mobx-location-history": "^1.0.3"
+    "mobx-location-history": "^2.0.0"
   },
   "peerDependencies": {
     "wouter": "^3.3.5",
