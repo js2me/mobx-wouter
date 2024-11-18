@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.svg" width="80" alt="Wouter + MobX" />
+  <img src="assets/logo.png" width="80" alt="Wouter + MobX" />
 </div>
 
 <br />
