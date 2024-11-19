@@ -1,11 +1,12 @@
 {
   "name": "mobx-wouter",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "clean": "rimraf dist",
     "check": "eslint . --fix",
     "prebuild": "npm run clean && npm run check",
     "build": "tsc && node ./post-build.mjs",
+    "pub": "PUBLISH=true pnpm run build",
     "pub:patch": "PUBLISH=true PUBLISH_VERSION=patch pnpm run build",
     "pub:minor": "PUBLISH=true PUBLISH_VERSION=minor pnpm run build",
     "pub:major": "PUBLISH=true PUBLISH_VERSION=major pnpm run build"
@@ -29,7 +30,7 @@
     "url": "git://github.com/js2me/mobx-wouter"
   },
   "dependencies": {
-    "mobx-location-history": "^2.0.1"
+    "mobx-location-history": "^2.0.2"
   },
   "peerDependencies": {
     "wouter": "^3.3.5",
@@ -44,7 +45,7 @@
     "@types/node": "20.14.5",
     "@types/react": "^18.3.3",
     "eslint": "8.57.0",
-    "js2me-exports-post-build-script": "2.0.10",
+    "js2me-exports-post-build-script": "2.0.13",
     "js2me-eslint-config": "1.0.4",
     "rimraf": "6.0.1",
     "typescript": "5.4.5"

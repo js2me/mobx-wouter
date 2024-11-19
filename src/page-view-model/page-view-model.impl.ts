@@ -6,7 +6,7 @@ export class PageViewModelImpl<
     Params extends Record<string, string> = Record<string, string>,
   >
   extends AbstractViewModel<Params>
-  implements PageViewModel<Params>
+  implements Omit<PageViewModel<Params>, 'payload'>
 {
   protected getParentViewModel(): null {
     return null;
