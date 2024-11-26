@@ -1,6 +1,6 @@
 {
   "name": "mobx-wouter",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "scripts": {
     "clean": "rimraf dist",
     "check": "eslint . --fix",
