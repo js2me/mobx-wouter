@@ -1,17 +1,14 @@
-import { AbstractViewModel } from 'mobx-vm-entities';
+import { AnyViewModel, ViewModelImpl } from 'mobx-vm-entities';
 
 import { PageViewModel } from './page-view-model';
 
 export class PageViewModelImpl<
     Params extends Record<string, string> = Record<string, string>,
+    ParentViewModel extends AnyViewModel | null = null,
   >
-  extends AbstractViewModel<Params, null>
-  implements PageViewModel<Params, null>
+  extends ViewModelImpl<Params, ParentViewModel>
+  implements PageViewModel<Params, ParentViewModel>
 {
-  protected getParentViewModel(): null {
-    return null;
-  }
-
   get pathParams() {
     return this.payload as Params;
   }
