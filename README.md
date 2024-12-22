@@ -58,6 +58,10 @@ const HomePageView = observer(({ model }: ViewModelProps<HomePageVM>) => {
 export const HomePage = withPageViewModel(HomePageVM)(HomePageView);
 ```
 
+### [`withLazyPageViewModel()`](src/page-view-model/with-lazy-page-view-model.tsx)  
+
+Same as [`withPageViewModel()`](src/page-view-model/with-page-view-model.tsx) but with lazy loading view and view model  
+
 ### [`MobxRouter`](src/router/router.ts)   
 
 Router for client navigation  
