@@ -2,6 +2,18 @@
 
 # mobx-wouter  
 
+[![NPM version][npm-image]][npm-url] [![build status][github-build-actions-image]][github-actions-url] [![npm download][download-image]][download-url] [![bundle size][bundlephobia-image]][bundlephobia-url]
+
+
+[npm-image]: http://img.shields.io/npm/v/mobx-wouter.svg
+[npm-url]: http://npmjs.org/package/mobx-wouter
+[github-build-actions-image]: https://github.com/js2me/mobx-wouter/workflows/Build/badge.svg
+[github-actions-url]: https://github.com/js2me/mobx-wouter/actions
+[download-image]: https://img.shields.io/npm/dm/mobx-wouter.svg
+[download-url]: https://npmjs.org/package/mobx-wouter
+[bundlephobia-url]: https://bundlephobia.com/result?p=mobx-wouter
+[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/mobx-wouter
+
 _**MobX** integration with **Wouter**_
 
 
@@ -11,10 +23,40 @@ _**MobX** integration with **Wouter**_
 
 Simple [`ViewModel`](https://github.com/js2me/mobx-vm-entities?tab=readme-ov-file#mobx-view-model) wrapper for pages  
 
+#### Usage:  
+
+```ts
+import { PageViewModelImpl } from 'mobx-wouter';
+
+class HomePageVM extends PageViewModelImpl<{ pathParam: string }> {
+  @observable
+  accessor value = 'value';
+
+  mount() {
+    super.mount();
+    document.title = 'Home';
+    // do something
+  }
+}
+```
+
 
 ### [`withPageViewModel()`](src/page-view-model/with-page-view-model.tsx)  
 
 HOC for integration `PageViewModel` with view component of **React**  
+
+#### Usage:  
+
+```tsx
+import { ViewModelProps } from 'mobx-vm-entities';  
+import { withPageViewModel } from 'mobx-wouter';
+
+const HomePageView = observer(({ model }: ViewModelProps<HomePageVM>) => {
+  return <div>{`render value - ${model.value}`}</div>
+})
+
+export const HomePage = withPageViewModel(HomePageVM)(HomePageView);
+```
 
 ### [`MobxRouter`](src/router/router.ts)   
 
