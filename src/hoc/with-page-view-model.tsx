@@ -5,10 +5,10 @@ import type { PageViewModel } from '../page-view-model';
 
 export const withPageViewModel = <VM extends PageViewModel<any, any>>(
   model: Class<VM>,
-  config?: Omit<ViewModelHocConfig<VM>, 'getPayload'>,
+  config?: ViewModelHocConfig<any>,
 ) => {
   return withViewModel(model, {
     ...config,
-    getPayload: (props) => props.params,
+    getPayload: config?.getPayload ?? ((props) => props.params),
   });
 };

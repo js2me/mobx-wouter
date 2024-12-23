@@ -14,5 +14,8 @@ export const withLazyPageViewModel = <
   loadFunction: () => Promise<LazyViewAndModel<TViewModel, TView>>,
   config?: ViewModelHocConfig<any>,
 ) => {
-  return withLazyViewModel(loadFunction, config);
+  return withLazyViewModel(loadFunction, {
+    ...config,
+    getPayload: config?.getPayload ?? ((props) => props.params),
+  });
 };
