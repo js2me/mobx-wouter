@@ -18,8 +18,8 @@ importers:
         specifier: ^4.0.7
         version: 4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-vm-entities:
-        specifier: ^5.0.6
-        version: 5.0.9(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.0.10
+        version: 5.0.10(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1835,8 +1835,8 @@ packages:
       react-native:
         optional: true
 
-  mobx-vm-entities@5.0.9:
-    resolution: {integrity: sha512-aEg/v30YWGO4qZQbsP5BjCdDNFqY4iISSnP8kmqjpPh2v/Vh0amwOUBwHX1MvOj072OstjkJrE+qkC715GwhbQ==}
+  mobx-vm-entities@5.0.10:
+    resolution: {integrity: sha512-fWWUhnY48YJNacMW0tuLB1s6pcALbeeYOBigAGyPxmhDNqJ2rO4/e7oH8VZyCMjICX/UaG1ZsJ2YJRlJVYiHhw==}
     peerDependencies:
       mobx: ^6.12.4
       mobx-react-lite: ^4.0.7
@@ -1997,8 +1997,8 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react-simple-loadable@2.0.3:
-    resolution: {integrity: sha512-PtFenY/KE1IRsDph5eWB5hJAh4jZ5vdBemioSb17spY4U+ynQmLPWH0y6iCY2ynDo7cH/99a1fMxIp8yuZcvbg==}
+  react-simple-loadable@2.0.4:
+    resolution: {integrity: sha512-WWmqZB8yjhKa1CwMA1oKkx9m3LZI13vz3FJki3813TEhnhyMzXcqL5uOLGiBEKAzTQogcDC4xckFLCsYiEJXVw==}
     peerDependencies:
       react: ^18.3.1
 
@@ -3869,9 +3869,9 @@ snapshots:
     dependencies:
       eslint: 8.57.1
 
-  eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)):
+  eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)):
     dependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
 
   eslint-import-resolver-node@0.3.9:
     dependencies:
@@ -3893,7 +3893,7 @@ snapshots:
       is-glob: 4.0.3
       stable-hash: 0.0.4
     optionalDependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -3908,7 +3908,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
@@ -4005,7 +4005,7 @@ snapshots:
       builtin-modules: 3.3.0
       bytes: 3.1.2
       eslint: 8.57.1
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@8.57.1)
       eslint-plugin-react: 7.37.3(eslint@8.57.1)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.1)
@@ -4465,9 +4465,9 @@ snapshots:
       '@typescript-eslint/parser': 7.18.0(eslint@8.57.1)(typescript@5.7.2)
       eslint: 8.57.1
       eslint-config-prettier: 9.1.0(eslint@8.57.1)
-      eslint-import-resolver-alias: 1.1.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))
+      eslint-import-resolver-alias: 1.1.2(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1))
       eslint-import-resolver-typescript: 3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1)
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0)(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.2)
       eslint-plugin-react: 7.37.3(eslint@8.57.1)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.1)
@@ -4601,14 +4601,14 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  mobx-vm-entities@5.0.9(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  mobx-vm-entities@5.0.10(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       lodash-es: 4.17.21
       mobx: 6.13.5
       mobx-react-lite: 4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-simple-loadable: 2.0.3(react@18.3.1)
+      react-simple-loadable: 2.0.4(react@18.3.1)
 
   mobx@6.13.5: {}
 
@@ -4759,7 +4759,7 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-simple-loadable@2.0.3(react@18.3.1):
+  react-simple-loadable@2.0.4(react@18.3.1):
     dependencies:
       react: 18.3.1
 
