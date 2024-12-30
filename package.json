@@ -44,7 +44,7 @@
     "@types/node": "^20.17.10",
     "@types/react": "^18.3.18",
     "eslint": "^8.57.1",
-    "js2me-eslint-config": "^1.0.6",
+    "js2me-eslint-config": "^1.0.7",
     "js2me-exports-post-build-script": "^2.0.17",
     "rimraf": "^6.0.1",
     "typescript": "^5.7.2"
