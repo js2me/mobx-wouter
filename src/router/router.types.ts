@@ -11,6 +11,16 @@ export interface IMobxRouter {
   queryParams: IQueryParams;
 
   /**
+   * The base URL of the router.
+   */
+  baseUrl?: string;
+
+  /**
+   * The type of the router, either 'browser' or 'hash'.
+   */
+  type: RouterType;
+
+  /**
    * Creates a {@link RouterPath} object based on the route configuration.
    *
    * @param to - Route configuration including a path, search parameters and hash.
@@ -37,7 +47,10 @@ export interface IMobxRouter {
 /**
  * Описание конфигурации, по которой происходит навигация
  */
-export type RouterToConfig = string | { pathname: string; search?: AnyObject };
+export type RouterToConfig =
+  | string
+  | RouterPath
+  | { pathname: string; search?: AnyObject };
 
 export interface RouterPath {
   pathname: string;
@@ -45,11 +58,15 @@ export interface RouterPath {
   hash: string;
 }
 
+export type RouterType = 'browser' | 'hash';
+
 export interface RouterConfig {
   history?: IMobxHistory;
   location?: IMobxLocation;
   queryParams?: IQueryParams;
   abortSignal?: AbortSignal;
+  type?: RouterType;
+  baseUrl?: string;
 }
 
 export type RouterNavigateParams = { replace?: boolean };
