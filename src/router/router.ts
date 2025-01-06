@@ -81,9 +81,9 @@ export class MobxRouter implements IMobxRouter {
 
     let url = `${path.pathname}${path.hash ? `#${path.hash}` : ''}${path.search}`;
 
-    if (!path.hash && this.type === 'hash') {
-      url = `#${url}`;
-    }
+    // if (!path.hash && this.type === 'hash') {
+    //   url = `#${url}`;
+    // }
 
     if (this.baseUrl && this.baseUrl !== '/') {
       url = `${this.baseUrl}${url}`;
