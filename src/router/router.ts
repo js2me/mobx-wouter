@@ -34,57 +34,62 @@ export class MobxRouter implements IMobxRouter {
       config.queryParams ?? new QueryParams(this.location, this.history);
   }
 
+  createPath(to: RouterToConfig): RouterPath {
+    const baseUrl = !this.baseUrl || this.baseUrl === '/' ? '' : this.baseUrl;
+
+    if (typeof to === 'string') {
+      const [rawPathname, ...searchSegments] = to.split('?');
+      const [pathname, ...hashSegments] = rawPathname.split('#');
+      const search = searchSegments.join('?');
+      const hash = hashSegments.join('#');
+
+      return {
+        baseUrl,
+        pathname,
+        search: search ? `?${search}` : '',
+        hash: hash || '',
+      };
+    } else if ('baseUrl' in to) {
+      return to;
+    } else {
+      return this.createPath(
+        `${to.pathname}${buildSearchString(to.search || {})}`,
+      );
+    }
+  }
+
+  createUrl(to: RouterToConfig, type?: RouterType): string {
+    const path = this.createPath(to);
+
+    return [
+      path.baseUrl,
+      type === 'hash' ? '#' : '',
+      path.pathname,
+      path.hash && `#${path.hash}`,
+      path.search,
+    ].join('');
+  }
+
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
     const path = this.createPath(to);
-    const url = this.createUrl(path);
+    const url = this.createUrl(path, this.type);
+    const state = options?.state ?? null;
 
     if (this.type === 'hash') {
       this.location.hash = path.hash;
     }
 
-    if (options?.replace) {
-      this.history.replaceState(null, '', url);
+    if (
+      options?.replace ||
+      (options?.replace == null && this.type === 'hash')
+    ) {
+      this.history.replaceState(state, '', url);
     } else {
-      this.history.pushState(null, '', url);
+      this.history.pushState(state, '', url);
     }
   }
 
   back() {
     this.history.back();
-  }
-
-  createPath(to: RouterToConfig): RouterPath {
-    if (typeof to === 'object' && 'hash' in to) {
-      return to;
-    }
-    if (typeof to === 'string') {
-      const [rawPathname, search] = to.split('?', 2);
-      const [pathname, hash] = rawPathname.split('#', 2);
-
-      return {
-        pathname,
-        search: search ? `?${search}` : '',
-        hash: hash || '',
-      };
-    } else {
-      const [pathname, hash] = to.pathname.split('#', 2);
-      return {
-        pathname,
-        search: buildSearchString(to.search || {}),
-        hash: hash || '',
-      };
-    }
-  }
-
-  createUrl(to: RouterToConfig): string {
-    const path = this.createPath(to);
-
-    let url = `${path.pathname}${path.hash ? `#${path.hash}` : ''}${path.search}`;
-
-    if (this.baseUrl && this.baseUrl !== '/') {
-      url = `${this.baseUrl}${url}`;
-    }
-
-    return url;
   }
 }

@@ -29,12 +29,13 @@ export interface IMobxRouter {
   createPath(to: RouterToConfig): RouterPath;
 
   /**
-   * Creates a URL based on the route configuration.
+   * Creates a routing navigation URL based on the route configuration.
    *
    * @param to - Route configuration including a path and search parameters.
+   * @param type - Url type which to create url
    * @returns A formed URL as a string.
    */
-  createUrl(to: RouterToConfig): string;
+  createUrl(to: RouterToConfig, type?: RouterType): string;
 
   /**
    * Navigation through the application.
@@ -44,6 +45,13 @@ export interface IMobxRouter {
   back(): void;
 }
 
+export interface RouterPath {
+  baseUrl: string;
+  pathname: string;
+  search: string;
+  hash: string;
+}
+
 /**
  * Описание конфигурации, по которой происходит навигация
  */
@@ -51,12 +59,6 @@ export type RouterToConfig =
   | string
   | RouterPath
   | { pathname: string; search?: AnyObject };
-
-export interface RouterPath {
-  pathname: string;
-  search: string;
-  hash: string;
-}
 
 export type RouterType = 'browser' | 'hash';
 
@@ -69,4 +71,4 @@ export interface RouterConfig {
   baseUrl?: string;
 }
 
-export type RouterNavigateParams = { replace?: boolean };
+export type RouterNavigateParams = { replace?: boolean; state?: any };

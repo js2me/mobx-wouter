@@ -9,4 +9,25 @@ module.exports = {
       { ignore: Object.keys(packageJson.peerDependencies) },
     ],
   },
+  overrides: [
+    {
+      files: [
+        "*.test.ts",
+        "*.test.tsx"
+      ],
+      rules: {
+        'sonarjs/no-identical-functions': 'off',
+        'sonarjs/no-nested-functions': 'off',
+        'unicorn/consistent-function-scoping': 'off',
+        'unicorn/no-this-assignment': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-this-alias': 'off',
+        'react-hooks/rules-of-hooks': 'off',
+        'sonarjs/use-type-alias': 'off'
+      },
+      parserOptions: {
+        project: 'tsconfig.test.json',
+      },
+    }
+  ]
 };
