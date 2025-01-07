@@ -2,12 +2,13 @@
 
 # mobx-wouter  
 
-[![NPM version][npm-image]][npm-url] [![build status][github-build-actions-image]][github-actions-url] [![npm download][download-image]][download-url] [![bundle size][bundlephobia-image]][bundlephobia-url]
+[![NPM version][npm-image]][npm-url] [![test status][github-test-actions-image]][github-actions-url] [![build status][github-build-actions-image]][github-actions-url] [![npm download][download-image]][download-url] [![bundle size][bundlephobia-image]][bundlephobia-url]
 
 
 [npm-image]: http://img.shields.io/npm/v/mobx-wouter.svg
 [npm-url]: http://npmjs.org/package/mobx-wouter
 [github-build-actions-image]: https://github.com/js2me/mobx-wouter/workflows/Build/badge.svg
+[github-test-actions-image]: https://github.com/js2me/mobx-wouter/workflows/Test/badge.svg
 [github-actions-url]: https://github.com/js2me/mobx-wouter/actions
 [download-image]: https://img.shields.io/npm/dm/mobx-wouter.svg
 [download-url]: https://npmjs.org/package/mobx-wouter
