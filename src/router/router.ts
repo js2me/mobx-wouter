@@ -71,6 +71,8 @@ export class MobxRouter implements IMobxRouter {
     ].join('');
   }
 
+  private lastViewTransition?: ViewTransition;
+
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
     const path = this.createPath(to);
     const url = this.createUrl(path, this.type);
@@ -93,7 +95,10 @@ export class MobxRouter implements IMobxRouter {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (this.config.useStartViewTransition && document.startViewTransition) {
-      document.startViewTransition(() => {
+      if (this.lastViewTransition) {
+        this.lastViewTransition.skipTransition();
+      }
+      this.lastViewTransition = document.startViewTransition(() => {
         startTransition(navigateAction);
       });
     } else {
