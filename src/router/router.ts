@@ -78,16 +78,16 @@ export class MobxRouter implements IMobxRouter {
       options?.replace || (options?.replace == null && this.type === 'hash');
 
     const navigateAction = () => {
+      if (this.type === 'hash') {
+        this.location.hash = path.hash;
+      }
+
       if (useReplace) {
         this.history.replaceState(state, '', url);
       } else {
         this.history.pushState(state, '', url);
       }
     };
-
-    if (this.type === 'hash') {
-      this.location.hash = path.hash;
-    }
 
     if (this.config.useStartViewTransition && document.startViewTransition) {
       document.startViewTransition(navigateAction).ready.then(navigateAction);
