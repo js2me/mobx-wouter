@@ -7,6 +7,7 @@ import {
   QueryParams,
   buildSearchString,
 } from 'mobx-location-history';
+import { startTransition } from 'react';
 
 import {
   IMobxRouter,
@@ -89,8 +90,10 @@ export class MobxRouter implements IMobxRouter {
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if (this.config.useStartViewTransition && document.startViewTransition) {
-      document.startViewTransition(navigateAction).ready.then(navigateAction);
+      startTransition(navigateAction);
     } else {
       navigateAction();
     }
