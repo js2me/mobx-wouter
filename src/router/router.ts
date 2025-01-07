@@ -93,7 +93,9 @@ export class MobxRouter implements IMobxRouter {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (this.config.useStartViewTransition && document.startViewTransition) {
-      startTransition(navigateAction);
+      document.startViewTransition(() => {
+        startTransition(navigateAction);
+      });
     } else {
       navigateAction();
     }
