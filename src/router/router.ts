@@ -101,6 +101,9 @@ export class MobxRouter implements IMobxRouter {
       this.lastViewTransition = document.startViewTransition(() => {
         startTransition(navigateAction);
       });
+      this.lastViewTransition.finished.finally(() => {
+        delete this.lastViewTransition;
+      });
     } else {
       navigateAction();
     }
