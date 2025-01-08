@@ -73,7 +73,13 @@ export class MobxRouter implements IMobxRouter {
 
   protected hashNavigate(to: RouterToConfig, options?: RouterNavigateParams) {
     const path = this.createPath(to);
-    const url = this.createUrl(path, this.type);
+    const url = this.createUrl(
+      {
+        ...path,
+        baseUrl: this.location.pathname,
+      },
+      this.type,
+    );
     const state = options?.state ?? null;
 
     this.wrapInViewTransition(() => {
