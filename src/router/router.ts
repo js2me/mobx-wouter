@@ -7,6 +7,7 @@ import {
   QueryParams,
   buildSearchString,
 } from 'mobx-location-history';
+import { startTransition } from 'react';
 
 import {
   IMobxRouter,
@@ -70,6 +71,8 @@ export class MobxRouter implements IMobxRouter {
     ].join('');
   }
 
+  private lastViewTransition?: ViewTransition;
+
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
     const path = this.createPath(to);
     const url = this.createUrl(path, this.type);
@@ -77,14 +80,32 @@ export class MobxRouter implements IMobxRouter {
     const useReplace =
       options?.replace || (options?.replace == null && this.type === 'hash');
 
-    if (this.type === 'hash') {
-      this.location.hash = path.hash;
-    }
+    const navigateAction = () => {
+      if (this.type === 'hash') {
+        this.location.hash = path.hash;
+      }
 
-    if (useReplace) {
-      this.history.replaceState(state, '', url);
+      if (useReplace) {
+        this.history.replaceState(state, '', url);
+      } else {
+        this.history.pushState(state, '', url);
+      }
+    };
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (this.config.useStartViewTransition && document.startViewTransition) {
+      if (this.lastViewTransition) {
+        this.lastViewTransition.skipTransition();
+      }
+      this.lastViewTransition = document.startViewTransition(() => {
+        startTransition(navigateAction);
+      });
+      this.lastViewTransition.finished.finally(() => {
+        delete this.lastViewTransition;
+      });
     } else {
-      this.history.pushState(state, '', url);
+      navigateAction();
     }
   }
 
