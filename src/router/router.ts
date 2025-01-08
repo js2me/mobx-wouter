@@ -76,7 +76,11 @@ export class MobxRouter implements IMobxRouter {
     const url = this.createUrl(
       {
         ...path,
-        // This
+        // This is fixes bug with pathname endings /
+        // If location.pathname is /test-foo then after navigation to /test-foo#bar
+        // navigation back will not work
+        // If location.pathname is /test-foo/ then after navigation to /test-foo/#/bar
+        // navigation back will not work
         baseUrl: this.location.pathname,
       },
       this.type,

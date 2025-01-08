@@ -12,6 +12,7 @@ export interface IMobxRouter {
 
   /**
    * The base URL of the router.
+   * !!! Works only for "browser" router type
    */
   baseUrl?: string;
 
