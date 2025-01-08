@@ -33,6 +33,10 @@ export class MobxRouter implements IMobxRouter {
       config.location ?? new MobxLocation(this.history, config.abortSignal);
     this.queryParams =
       config.queryParams ?? new QueryParams(this.location, this.history);
+
+    if (!this.location.hash && this.type === 'hash') {
+      this.hashNavigate('/');
+    }
   }
 
   createPath(to: RouterToConfig): RouterPath {
@@ -71,7 +75,51 @@ export class MobxRouter implements IMobxRouter {
     ].join('');
   }
 
-  private lastViewTransition?: ViewTransition;
+  protected hashNavigate(to: RouterToConfig, options?: RouterNavigateParams) {
+    const path = this.createPath(to);
+    const url = this.createUrl(path, this.type);
+    const state = options?.state ?? null;
+
+    this.wrapInViewTransition(() => {
+      this.location.hash = path.hash;
+      this.history.replaceState(state, '', url);
+    });
+  }
+
+  protected browserNavigate(
+    to: RouterToConfig,
+    options?: RouterNavigateParams,
+  ) {
+    const path = this.createPath(to);
+    const url = this.createUrl(path, this.type);
+    const state = options?.state ?? null;
+
+    this.wrapInViewTransition(() => {
+      if (options?.replace) {
+        this.history.replaceState(state, '', url);
+      } else {
+        this.history.pushState(state, '', url);
+      }
+    });
+  }
+
+  protected lastViewTransition?: ViewTransition;
+
+  protected wrapInViewTransition(action: () => void) {
+    if (this.config.useStartViewTransition && document.startViewTransition) {
+      if (this.lastViewTransition) {
+        this.lastViewTransition.skipTransition();
+      }
+      this.lastViewTransition = document.startViewTransition(() => {
+        startTransition(action);
+      });
+      this.lastViewTransition.finished.finally(() => {
+        delete this.lastViewTransition;
+      });
+    } else {
+      action();
+    }
+  }
 
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
     const path = this.createPath(to);
