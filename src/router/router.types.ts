@@ -69,11 +69,6 @@ export interface RouterConfig {
   abortSignal?: AbortSignal;
   type?: RouterType;
   baseUrl?: string;
-  /**
-   * experimental feature
-   * Navigation will use https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition
-   */
-  useStartViewTransition?: boolean;
 }
 
 export type RouterNavigateParams = { replace?: boolean; state?: any };
