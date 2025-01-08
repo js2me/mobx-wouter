@@ -33,10 +33,6 @@ export class MobxRouter implements IMobxRouter {
       config.location ?? new MobxLocation(this.history, config.abortSignal);
     this.queryParams =
       config.queryParams ?? new QueryParams(this.location, this.history);
-
-    if (!this.location.hash && this.type === 'hash') {
-      this.hashNavigate('/');
-    }
   }
 
   createPath(to: RouterToConfig): RouterPath {
@@ -81,9 +77,9 @@ export class MobxRouter implements IMobxRouter {
     const state = options?.state ?? null;
 
     this.wrapInViewTransition(() => {
-      this.location.hash = path.hash;
+      this.location.hash = `#${path.pathname || '/'}`;
       this.history.replaceState(state, '', url);
-    });
+    }, options?.useStartViewTransition);
   }
 
   protected browserNavigate(
@@ -100,13 +96,21 @@ export class MobxRouter implements IMobxRouter {
       } else {
         this.history.pushState(state, '', url);
       }
-    });
+    }, options?.useStartViewTransition);
   }
 
   protected lastViewTransition?: ViewTransition;
 
-  protected wrapInViewTransition(action: () => void) {
-    if (this.config.useStartViewTransition && document.startViewTransition) {
+  protected wrapInViewTransition(
+    action: () => void,
+    useStartViewTransition?: boolean,
+  ) {
+    if (
+      (useStartViewTransition ||
+        (useStartViewTransition == null &&
+          this.config.useStartViewTransition)) &&
+      document.startViewTransition
+    ) {
       if (this.lastViewTransition) {
         this.lastViewTransition.skipTransition();
       }
@@ -122,38 +126,10 @@ export class MobxRouter implements IMobxRouter {
   }
 
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
-    const path = this.createPath(to);
-    const url = this.createUrl(path, this.type);
-    const state = options?.state ?? null;
-    const useReplace =
-      options?.replace || (options?.replace == null && this.type === 'hash');
-
-    const navigateAction = () => {
-      if (this.type === 'hash') {
-        this.location.hash = path.hash;
-      }
-
-      if (useReplace) {
-        this.history.replaceState(state, '', url);
-      } else {
-        this.history.pushState(state, '', url);
-      }
-    };
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if (this.config.useStartViewTransition && document.startViewTransition) {
-      if (this.lastViewTransition) {
-        this.lastViewTransition.skipTransition();
-      }
-      this.lastViewTransition = document.startViewTransition(() => {
-        startTransition(navigateAction);
-      });
-      this.lastViewTransition.finished.finally(() => {
-        delete this.lastViewTransition;
-      });
+    if (this.type === 'hash') {
+      this.hashNavigate(to, options);
     } else {
-      navigateAction();
+      this.browserNavigate(to, options);
     }
   }
 

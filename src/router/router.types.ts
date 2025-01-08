@@ -76,4 +76,12 @@ export interface RouterConfig {
   useStartViewTransition?: boolean;
 }
 
-export type RouterNavigateParams = { replace?: boolean; state?: any };
+export type RouterNavigateParams = {
+  replace?: boolean;
+  state?: any;
+  /**
+   * experimental feature
+   * Navigation will use https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition
+   */
+  useStartViewTransition?: boolean;
+};
