@@ -76,6 +76,7 @@ export class MobxRouter implements IMobxRouter {
     const url = this.createUrl(
       {
         ...path,
+        // This
         baseUrl: this.location.pathname,
       },
       this.type,
