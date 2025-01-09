@@ -3,9 +3,10 @@ import { EmptyObject } from 'mobx-vm-entities/utils/types';
 import { describe, expect, test } from 'vitest';
 
 import { PageViewModelImpl } from './page-view-model.impl';
+import { AnyPathParams } from './page-view-model.types';
 
 export class PageViewModelMock<
-  Params extends Record<string, string> = EmptyObject,
+  Params extends AnyPathParams = EmptyObject,
   ParentViewModel extends AnyViewModel | null = null,
 > extends PageViewModelImpl<Params, ParentViewModel> {}
 
