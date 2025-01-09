@@ -10,6 +10,9 @@ import { ComponentType, ReactNode } from 'react';
 
 import type { AnyPageViewModel } from '../page-view-model';
 
+export type PageViewModelProps<TPageVM extends AnyPageViewModel> =
+  ViewModelProps<TPageVM>;
+
 export type ComponentWithPageViewModel<
   TViewModel extends AnyViewModel,
   TComponentOriginProps extends AnyObject = ViewModelProps<TViewModel>,
