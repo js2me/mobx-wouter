@@ -18,8 +18,8 @@ importers:
         specifier: ^4.0.7
         version: 4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-vm-entities:
-        specifier: ^5.0.10
-        version: 5.0.15(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.0.19
+        version: 5.0.19(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -2463,8 +2463,8 @@ packages:
       react-native:
         optional: true
 
-  mobx-vm-entities@5.0.15:
-    resolution: {integrity: sha512-Z8GqhXMjr2QJcynUOR72DHbkFbO2qVZRc1bt1BuH/t7Faj8NLQHrqh0dRwkLben7wOSjFH5ijttm6ddMhNmK4g==}
+  mobx-vm-entities@5.0.19:
+    resolution: {integrity: sha512-9K5pA9SJN3UujbyDZXr8SSkEChn24m8AYJ0YeSNzLNzSnjFzaF5mCe7zMlDSD4gsRqadcSJvYmdJQC3Q4VWG4w==}
     peerDependencies:
       mobx: ^6.12.4
       mobx-react-lite: ^4.0.7
@@ -6038,7 +6038,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  mobx-vm-entities@5.0.15(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  mobx-vm-entities@5.0.19(mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       lodash-es: 4.17.21
       mobx: 6.13.5
