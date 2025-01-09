@@ -5,7 +5,7 @@ import {
   ViewModelProps,
   withViewModel,
 } from 'mobx-vm-entities';
-import { AnyObject, Class } from 'mobx-vm-entities/utils/types';
+import { AnyObject, Class, RenameKey } from 'mobx-vm-entities/utils/types';
 import { ComponentType, ReactNode } from 'react';
 
 import type { AnyPageViewModel } from '../page-view-model';
@@ -15,9 +15,7 @@ export type ComponentWithPageViewModel<
   TComponentOriginProps extends AnyObject = ViewModelProps<TViewModel>,
 > = (
   props: Omit<TComponentOriginProps, 'model'> &
-    Omit<ViewModelInputProps<TViewModel>, 'payload'> & {
-      params: ViewModelInputProps<TViewModel>['payload'];
-    },
+    RenameKey<ViewModelInputProps<TViewModel>, 'payload', 'params'>,
 ) => ReactNode;
 
 export function withPageViewModel<TViewModel extends AnyPageViewModel>(
