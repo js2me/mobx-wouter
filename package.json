@@ -37,7 +37,8 @@
     "url": "git://github.com/js2me/mobx-wouter"
   },
   "dependencies": {
-    "mobx-location-history": "^2.0.10"
+    "mobx-location-history": "^2.0.10",
+    "react-simple-loadable": "^2.0.4"
   },
   "peerDependencies": {
     "mobx": "^6.12.4",
