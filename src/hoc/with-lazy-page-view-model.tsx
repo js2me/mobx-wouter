@@ -3,21 +3,17 @@ import {
   ViewModelHocConfig,
   withLazyViewModel,
 } from 'mobx-vm-entities';
-import { AnyObject } from 'mobx-vm-entities/utils/types';
-import { ComponentType } from 'react';
-import { LoadableMixin } from 'react-simple-loadable/loadable';
+import { LoadableMixin } from 'mobx-vm-entities/lib/react-simple-loadable';
+import { ComponentProps, ComponentType } from 'react';
 
 import { AnyPageViewModel, PageViewModel } from '../page-view-model';
 
-import {
-  ComponentWithPageViewModel,
-  PageViewModelProps,
-} from './with-page-view-model';
+import { ComponentWithPageViewModel } from './with-page-view-model';
 
 export type ComponentWithLazyPageViewModel<
   TViewModel extends AnyPageViewModel,
-  TComponentOriginProps extends AnyObject = PageViewModelProps<TViewModel>,
-> = ComponentWithPageViewModel<TViewModel, TComponentOriginProps> &
+  TView extends ComponentType<any>,
+> = ComponentWithPageViewModel<TViewModel, ComponentProps<TView>> &
   LoadableMixin;
 
 export function withLazyPageViewModel<
