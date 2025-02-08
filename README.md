@@ -20,16 +20,16 @@ _**MobX** integration with **Wouter**_
 
 ## What package has   
 
-### [`PageViewModelImpl`](src/page-view-model/page-view-model.impl.ts), [`PageViewModel`](src/page-view-model/page-view-model.ts)   
+### [`PageViewModelBase`](src/page-view-model/page-view-model.base.ts), [`PageViewModel`](src/page-view-model/page-view-model.ts)   
 
-Simple [`ViewModel`](https://github.com/js2me/mobx-vm-entities?tab=readme-ov-file#mobx-view-model) wrapper for pages  
+Simple [`ViewModel`](https://github.com/js2me/mobx-view-model?tab=readme-ov-file#mobx-view-model) wrapper for pages  
 
 #### Usage:  
 
 ```ts
-import { PageViewModelImpl } from 'mobx-wouter';
+import { PageViewModelBase } from 'mobx-wouter';
 
-class HomePageVM extends PageViewModelImpl<{ pathParam: string }> {
+class HomePageVM extends PageViewModelBase<{ pathParam: string }> {
   @observable
   accessor value = 'value';
 
@@ -49,7 +49,7 @@ HOC for integration `PageViewModel` with view component of **React**
 #### Usage:  
 
 ```tsx
-import { ViewModelProps } from 'mobx-vm-entities';  
+import { ViewModelProps } from 'mobx-view-model';  
 import { withPageViewModel } from 'mobx-wouter';
 
 const HomePageView = observer(({ model }: ViewModelProps<HomePageVM>) => {

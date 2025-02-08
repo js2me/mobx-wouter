@@ -1,14 +1,14 @@
-import { AnyViewModel, ViewModelImpl } from 'mobx-vm-entities';
-import { EmptyObject } from 'mobx-vm-entities/utils/types';
+import { AnyViewModel, ViewModelBase } from 'mobx-view-model';
+import { EmptyObject } from 'mobx-view-model/utils/types';
 
 import { PageViewModel } from './page-view-model';
 import { AnyPathParams } from './page-view-model.types';
 
-export class PageViewModelImpl<
+export class PageViewModelBase<
     Params extends AnyPathParams = EmptyObject,
     ParentViewModel extends AnyViewModel | null = null,
   >
-  extends ViewModelImpl<Params, ParentViewModel>
+  extends ViewModelBase<Params, ParentViewModel>
   implements PageViewModel<Params, ParentViewModel>
 {
   get pathParams() {

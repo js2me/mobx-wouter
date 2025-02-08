@@ -1,8 +1,8 @@
 import { act, render, screen } from '@testing-library/react';
-import { createCounter } from 'mobx-vm-entities/utils/counter';
+import { createCounter } from 'mobx-view-model/utils/counter';
 import { describe, expect, test } from 'vitest';
 
-import { PageViewModelMock } from '../page-view-model/page-view-model.impl.test';
+import { PageViewModelBaseMock } from '../page-view-model/page-view-model.base.test';
 
 import { PageViewModelProps, withPageViewModel } from './with-page-view-model';
 
@@ -13,7 +13,7 @@ const createIdGenerator = (prefix?: string) => {
 
 describe('withPageViewModel', () => {
   test('renders (required path param)', async () => {
-    class VM extends PageViewModelMock<{ foo: string }> {
+    class VM extends PageViewModelBaseMock<{ foo: string }> {
       mount() {
         super.mount();
       }
@@ -29,7 +29,7 @@ describe('withPageViewModel', () => {
     expect(screen.getByText('hello VM_0')).toBeDefined();
   });
   test('renders (optional path param)', async () => {
-    class VM extends PageViewModelMock<{ foo?: string }> {
+    class VM extends PageViewModelBaseMock<{ foo?: string }> {
       mount() {
         super.mount();
       }
@@ -45,7 +45,7 @@ describe('withPageViewModel', () => {
     expect(screen.getByText('hello VM_0')).toBeDefined();
   });
   test('renders (no path params)', async () => {
-    class VM extends PageViewModelMock {
+    class VM extends PageViewModelBaseMock {
       mount() {
         super.mount();
       }

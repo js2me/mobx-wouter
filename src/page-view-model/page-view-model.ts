@@ -1,5 +1,5 @@
-import { AnyViewModel, ViewModel } from 'mobx-vm-entities';
-import { EmptyObject } from 'mobx-vm-entities/utils/types';
+import { AnyViewModel, ViewModel } from 'mobx-view-model';
+import { EmptyObject } from 'mobx-view-model/utils/types';
 
 import { AnyPathParams } from './page-view-model.types';
 

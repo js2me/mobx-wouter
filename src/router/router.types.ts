@@ -3,7 +3,7 @@ import {
   IMobxLocation,
   IQueryParams,
 } from 'mobx-location-history';
-import { AnyObject } from 'mobx-vm-entities/utils/types';
+import { AnyObject } from 'mobx-view-model/utils/types';
 
 export interface IMobxRouter {
   history: IMobxHistory;

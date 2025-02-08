@@ -2,8 +2,8 @@ import {
   LazyViewAndModel,
   ViewModelHocConfig,
   withLazyViewModel,
-} from 'mobx-vm-entities';
-import { LoadableMixin } from 'mobx-vm-entities/lib/react-simple-loadable';
+} from 'mobx-view-model';
+import { LoadableMixin } from 'mobx-view-model/lib/react-simple-loadable';
 import { ComponentProps, ComponentType } from 'react';
 
 import { AnyPageViewModel, PageViewModel } from '../page-view-model';

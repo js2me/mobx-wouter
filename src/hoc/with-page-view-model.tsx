@@ -4,8 +4,8 @@ import {
   ViewModelInputProps,
   ViewModelProps,
   withViewModel,
-} from 'mobx-vm-entities';
-import { AnyObject, Class, RenameKey } from 'mobx-vm-entities/utils/types';
+} from 'mobx-view-model';
+import { AnyObject, Class, RenameKey } from 'mobx-view-model/utils/types';
 import { ComponentType, ReactNode } from 'react';
 
 import type { AnyPageViewModel } from '../page-view-model';
