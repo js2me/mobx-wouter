@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
-import { createCounter } from 'mobx-view-model/utils/counter';
 import { describe, expect, test } from 'vitest';
+import { createCounter } from 'yummies/complex/counter';
 
 import { PageViewModelBaseMock } from '../page-view-model/page-view-model.base.test';
 
