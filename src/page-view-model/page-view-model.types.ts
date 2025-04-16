@@ -1,4 +1,4 @@
-import { PageViewModel } from './page-view-model';
+import { PageViewModel } from './page-view-model.js';
 
 export type AnyPageViewModel = PageViewModel<any, any>;
 

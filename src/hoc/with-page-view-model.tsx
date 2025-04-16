@@ -5,10 +5,10 @@ import {
   ViewModelProps,
   withViewModel,
 } from 'mobx-view-model';
-import { AnyObject, Class, RenameKey } from 'mobx-view-model/utils/types';
 import { ComponentType, ReactNode } from 'react';
+import type { AnyObject, Class, RenameKey } from 'yummies/utils/types';
 
-import type { AnyPageViewModel } from '../page-view-model';
+import type { AnyPageViewModel } from '../page-view-model/index.js';
 
 export type PageViewModelProps<TPageVM extends AnyPageViewModel> =
   ViewModelProps<TPageVM>;

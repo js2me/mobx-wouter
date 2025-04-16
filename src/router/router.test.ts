@@ -1,12 +1,12 @@
 import { MobxHistory } from 'mobx-location-history';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
-import { MobxRouter } from './router';
+import { MobxRouter } from './router.js';
 import {
   RouterNavigateParams,
   RouterToConfig,
   RouterType,
-} from './router.types';
+} from './router.types.js';
 
 export class HistoryMock extends MobxHistory {
   spies = {

@@ -16,7 +16,7 @@ import {
   RouterPath,
   RouterToConfig,
   RouterType,
-} from './router.types';
+} from './router.types.js';
 
 export class MobxRouter implements IMobxRouter {
   history: IMobxHistory;

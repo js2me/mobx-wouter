@@ -1,7 +1,7 @@
 import { AnyViewModel, ViewModel } from 'mobx-view-model';
-import { EmptyObject } from 'mobx-view-model/utils/types';
+import type { EmptyObject } from 'yummies/utils/types';
 
-import { AnyPathParams } from './page-view-model.types';
+import { AnyPathParams } from './page-view-model.types.js';
 
 export interface PageViewModel<
   Params extends AnyPathParams = EmptyObject,

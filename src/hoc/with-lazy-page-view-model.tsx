@@ -6,9 +6,9 @@ import {
 import { LoadableMixin } from 'mobx-view-model/lib/react-simple-loadable';
 import { ComponentProps, ComponentType } from 'react';
 
-import { AnyPageViewModel, PageViewModel } from '../page-view-model';
+import { AnyPageViewModel, PageViewModel } from '../page-view-model/index.js';
 
-import { ComponentWithPageViewModel } from './with-page-view-model';
+import { ComponentWithPageViewModel } from './with-page-view-model.js';
 
 export type ComponentWithLazyPageViewModel<
   TViewModel extends AnyPageViewModel,

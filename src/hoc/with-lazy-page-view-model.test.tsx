@@ -2,10 +2,10 @@ import { act, render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 import { createCounter } from 'yummies/complex/counter';
 
-import { PageViewModelBaseMock } from '../page-view-model/page-view-model.base.test';
+import { PageViewModelBaseMock } from '../page-view-model/page-view-model.base.test.js';
 
-import { withLazyPageViewModel } from './with-lazy-page-view-model';
-import { PageViewModelProps } from './with-page-view-model';
+import { withLazyPageViewModel } from './with-lazy-page-view-model.js';
+import { PageViewModelProps } from './with-page-view-model.js';
 
 const createIdGenerator = (prefix?: string) => {
   const counter = createCounter();

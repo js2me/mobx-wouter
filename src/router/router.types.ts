@@ -3,7 +3,6 @@ import {
   IMobxLocation,
   IQueryParams,
 } from 'mobx-location-history';
-import { AnyObject } from 'mobx-view-model/utils/types';
 
 export interface IMobxRouter {
   history: IMobxHistory;
@@ -59,7 +58,7 @@ export interface RouterPath {
 export type RouterToConfig =
   | string
   | RouterPath
-  | { pathname: string; search?: AnyObject };
+  | { pathname: string; search?: Record<string, any> };
 
 export type RouterType = 'browser' | 'hash';
 
