@@ -67,7 +67,7 @@ Same as [`withPageViewModel()`](src/page-view-model/with-page-view-model.tsx) bu
 
 Router for client navigation  
 
-### [`MobxLocation`, `MobxHistory`, `QueryParams` and etc](https://github.com/js2me/mobx-location-history)  
+### [`Location`, `History`, `QueryParams` and etc](https://github.com/js2me/mobx-location-history)  
 
 Exports from [mobx-location-history](https://github.com/js2me/mobx-location-history)  
 
@@ -75,11 +75,10 @@ Exports from [mobx-location-history](https://github.com/js2me/mobx-location-hist
 ### Usage   
 
 ```ts
-import { MobxRouter, MobxLocation, MobxHistory, QueryParams } from "mobx-wouter";
+import { Router, Location, History, QueryParams } from "mobx-wouter";
 
-const router = new MobxRouter({
-  history: //, new MobxLocation()
-  location: //, new MobxHistory()
+const router = new Router({
+  history: //, new Location()
   queryParams: //, new QueryParams(),
   abortSignal: //
 })

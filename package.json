@@ -39,11 +39,10 @@
   },
   "type": "module",
   "dependencies": {
-    "mobx-location-history": "^2.3.1",
-    "yummies": "^3.2.2"
+    "mobx-location-history": "^5.1.0",
+    "yummies": "^3.2.6"
   },
   "peerDependencies": {
-    "mobx-location-history": "^2.0.11",
     "mobx": "^6.12.4",
     "mobx-react-lite": "^4.0.7",
     "mobx-view-model": "^6.0.0",
@@ -51,9 +50,6 @@
     "wouter": "^3.3.5"
   },
   "peerDependenciesMeta": {
-    "mobx-location-history": {
-      "optional": true
-    },
     "mobx-view-model": {
       "optional": true
     }

@@ -1,16 +1,14 @@
 import {
-  IMobxHistory,
-  IMobxLocation,
   IQueryParams,
-  MobxHistory,
-  MobxLocation,
+  History,
   QueryParams,
   buildSearchString,
+  AnyHistory,
 } from 'mobx-location-history';
 import { startTransition } from 'react';
 
 import {
-  IMobxRouter,
+  IRouter,
   RouterConfig,
   RouterNavigateParams,
   RouterPath,
@@ -18,21 +16,24 @@ import {
   RouterType,
 } from './router.types.js';
 
-export class MobxRouter implements IMobxRouter {
-  history: IMobxHistory;
-  location: IMobxLocation;
+export class Router<THistory extends AnyHistory> implements IRouter<THistory> {
+  history: THistory;
+  location: THistory['location'];
   queryParams: IQueryParams;
   baseUrl: string | undefined;
   type: RouterType;
 
-  constructor(protected config: RouterConfig) {
+  constructor(protected config: RouterConfig<THistory>) {
     this.baseUrl = config.baseUrl;
     this.type = config.type ?? 'browser';
-    this.history = config.history ?? new MobxHistory(config.abortSignal);
-    this.location =
-      config.location ?? new MobxLocation(this.history, config.abortSignal);
+    this.history =
+      config.history ??
+      (new History({
+        abortSignal: config.abortSignal,
+      }) as unknown as THistory);
+    this.location = config.location ?? this.history.location;
     this.queryParams =
-      config.queryParams ?? new QueryParams(this.location, this.history);
+      config.queryParams ?? new QueryParams({ history: this.history });
   }
 
   createPath(to: RouterToConfig): RouterPath {
@@ -89,7 +90,7 @@ export class MobxRouter implements IMobxRouter {
 
     this.wrapInViewTransition(() => {
       this.location.hash = `#${path.pathname || '/'}`;
-      this.history.replaceState(state, '', url);
+      this.history.replace(url, state);
     }, options?.useStartViewTransition);
   }
 
@@ -103,9 +104,9 @@ export class MobxRouter implements IMobxRouter {
 
     this.wrapInViewTransition(() => {
       if (options?.replace) {
-        this.history.replaceState(state, '', url);
+        this.history.replace(url, state);
       } else {
-        this.history.pushState(state, '', url);
+        this.history.push(url, state);
       }
     }, options?.useStartViewTransition);
   }
@@ -148,3 +149,13 @@ export class MobxRouter implements IMobxRouter {
     this.history.back();
   }
 }
+
+/**
+ * @deprecated Use `Router` instead.
+ * This export will be removed in next major release
+ */
+export const MobxRouter = Router;
+
+export const createRouter = <THistory extends AnyHistory>(
+  config: RouterConfig<THistory>,
+) => new Router<THistory>(config);
