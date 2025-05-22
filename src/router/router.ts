@@ -16,7 +16,7 @@ import {
   RouterType,
 } from './router.types.js';
 
-export class Router<THistory extends AnyHistory> implements IRouter<THistory> {
+export class Router<THistory extends AnyHistory = AnyHistory> implements IRouter<THistory> {
   history: THistory;
   location: THistory['location'];
   queryParams: IQueryParams;

@@ -1,6 +1,6 @@
 import { AnyHistory, IQueryParams } from 'mobx-location-history';
 
-export interface IRouter<THistory extends AnyHistory> {
+export interface IRouter<THistory extends AnyHistory = AnyHistory> {
   history: THistory;
   location: THistory['location'];
   queryParams: IQueryParams;
@@ -64,7 +64,7 @@ export type RouterToConfig =
 
 export type RouterType = 'browser' | 'hash';
 
-export interface RouterConfig<THistory extends AnyHistory> {
+export interface RouterConfig<THistory extends AnyHistory = AnyHistory> {
   history?: THistory;
   location?: THistory['location'];
   queryParams?: IQueryParams;
