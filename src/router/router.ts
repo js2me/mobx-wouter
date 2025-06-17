@@ -79,42 +79,6 @@ export class Router<THistory extends History = History>
     ].join('');
   }
 
-  protected hashNavigate(to: RouterToConfig, options?: RouterNavigateParams) {
-    const path = this.createPath(to);
-    const url = this.createUrl({
-      ...path,
-      // This is fixes bug with pathname endings /
-      // If location.pathname is /test-foo then after navigation to /test-foo#bar
-      // navigation back will not work
-      // If location.pathname is /test-foo/ then after navigation to /test-foo/#/bar
-      // navigation back will not work
-      baseUrl: this.location.pathname,
-    });
-    const state = options?.state ?? null;
-
-    this.wrapInViewTransition(() => {
-      this.location.hash = `#${path.pathname || '/'}`;
-      this.history.replace(url, state);
-    }, options?.useStartViewTransition);
-  }
-
-  protected browserNavigate(
-    to: RouterToConfig,
-    options?: RouterNavigateParams,
-  ) {
-    const path = this.createPath(to);
-    const url = this.createUrl(path);
-    const state = options?.state ?? null;
-
-    this.wrapInViewTransition(() => {
-      if (options?.replace) {
-        this.history.replace(url, state);
-      } else {
-        this.history.push(url, state);
-      }
-    }, options?.useStartViewTransition);
-  }
-
   protected lastViewTransition?: ViewTransition;
 
   protected wrapInViewTransition(
@@ -141,11 +105,40 @@ export class Router<THistory extends History = History>
     }
   }
 
+  protected hashNavigate(to: RouterToConfig, options?: RouterNavigateParams) {
+    const path = this.createPath(to);
+    const url = this.createUrl({
+      ...path,
+      // This is fixes bug with pathname endings /
+      // If location.pathname is /test-foo then after navigation to /test-foo#bar
+      // navigation back will not work
+      // If location.pathname is /test-foo/ then after navigation to /test-foo/#/bar
+      // navigation back will not work
+      baseUrl: this.location.pathname,
+    });
+    const state = options?.state ?? null;
+
+    this.wrapInViewTransition(() => {
+      this.location.hash = `#${path.pathname || '/'}`;
+      this.history.replace(url, state);
+    }, options?.useStartViewTransition);
+  }
+
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
     if (this.config.type === 'hash') {
       this.hashNavigate(to, options);
     } else {
-      this.browserNavigate(to, options);
+      const path = this.createPath(to);
+      const url = this.createUrl(path);
+      const state = options?.state ?? null;
+
+      this.wrapInViewTransition(() => {
+        if (options?.replace) {
+          this.history.replace(url, state);
+        } else {
+          this.history.push(url, state);
+        }
+      }, options?.useStartViewTransition);
     }
   }
 

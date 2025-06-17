@@ -25,7 +25,8 @@ module.exports = {
         '@typescript-eslint/no-this-alias': 'off',
         'react-hooks/rules-of-hooks': 'off',
         'sonarjs/use-type-alias': 'off',
-        'sonarjs/deprecation': 'off'
+        'sonarjs/deprecation': 'off',
+        'sonarjs/no-empty-test-file': 'off'
       },
       parserOptions: {
         project: 'tsconfig.test.json',

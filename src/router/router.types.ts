@@ -61,7 +61,6 @@ export type RouterType = 'browser' | 'hash';
 
 export interface RouterConfig<THistory extends History = History> {
   history?: THistory;
-  location?: THistory['location'];
   queryParams?: IQueryParams;
   abortSignal?: AbortSignal;
   /**
