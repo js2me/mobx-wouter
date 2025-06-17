@@ -39,7 +39,7 @@
   },
   "type": "module",
   "dependencies": {
-    "mobx-location-history": "^5.1.0",
+    "mobx-location-history": "^7.0.3",
     "yummies": "^3.2.6"
   },
   "peerDependencies": {

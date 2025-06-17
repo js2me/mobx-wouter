@@ -1,6 +1,6 @@
-import { AnyHistory, IQueryParams } from 'mobx-location-history';
+import { History, IQueryParams } from 'mobx-location-history';
 
-export interface IRouter<THistory extends AnyHistory = AnyHistory> {
+export interface IRouter<THistory extends History = History> {
   history: THistory;
   location: THistory['location'];
   queryParams: IQueryParams;
@@ -10,11 +10,6 @@ export interface IRouter<THistory extends AnyHistory = AnyHistory> {
    * !!! Works only for "browser" router type
    */
   baseUrl?: string;
-
-  /**
-   * The type of the router, either 'browser' or 'hash'.
-   */
-  type: RouterType;
 
   /**
    * Creates a {@link RouterPath} object based on the route configuration.
@@ -45,7 +40,7 @@ export interface IRouter<THistory extends AnyHistory = AnyHistory> {
  * @deprecated use `IRouter` instead.
  * This type will be removed in next major release
  */
-export type IMobxRouter = IRouter<AnyHistory>;
+export type IMobxRouter = IRouter<History>;
 
 export interface RouterPath {
   baseUrl: string;
@@ -64,11 +59,14 @@ export type RouterToConfig =
 
 export type RouterType = 'browser' | 'hash';
 
-export interface RouterConfig<THistory extends AnyHistory = AnyHistory> {
+export interface RouterConfig<THistory extends History = History> {
   history?: THistory;
   location?: THistory['location'];
   queryParams?: IQueryParams;
   abortSignal?: AbortSignal;
+  /**
+   * @deprecated use provided {history} (createBrowserHistory, createHashHistory)
+   */
   type?: RouterType;
   baseUrl?: string;
   /**

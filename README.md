@@ -20,6 +20,28 @@ _**MobX** integration with **Wouter**_
 
 ## What package has   
 
+### [`Router`](src/router/router.ts)   
+
+Router for client navigation  
+
+### Usage   
+
+```ts
+import { Router, Location, History, QueryParams } from "mobx-wouter";
+
+const router = new Router({
+  history: //, new Location()
+  queryParams: //, new QueryParams(),
+  abortSignal: //
+})
+```
+
+
+### [`Location`, `History`, `QueryParams` and etc](https://github.com/js2me/mobx-location-history)  
+
+Exports from [mobx-location-history](https://github.com/js2me/mobx-location-history)  
+
+
 ### [`PageViewModelBase`](src/page-view-model/page-view-model.base.ts), [`PageViewModel`](src/page-view-model/page-view-model.ts)   
 
 Simple [`ViewModel`](https://github.com/js2me/mobx-view-model?tab=readme-ov-file#mobx-view-model) wrapper for pages  
@@ -63,23 +85,3 @@ export const HomePage = withPageViewModel(HomePageVM)(HomePageView);
 
 Same as [`withPageViewModel()`](src/page-view-model/with-page-view-model.tsx) but with lazy loading view and view model  
 
-### [`MobxRouter`](src/router/router.ts)   
-
-Router for client navigation  
-
-### [`Location`, `History`, `QueryParams` and etc](https://github.com/js2me/mobx-location-history)  
-
-Exports from [mobx-location-history](https://github.com/js2me/mobx-location-history)  
-
-
-### Usage   
-
-```ts
-import { Router, Location, History, QueryParams } from "mobx-wouter";
-
-const router = new Router({
-  history: //, new Location()
-  queryParams: //, new QueryParams(),
-  abortSignal: //
-})
-```

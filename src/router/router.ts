@@ -1,9 +1,10 @@
 import {
-  IQueryParams,
   History,
+  IQueryParams,
   QueryParams,
   buildSearchString,
-  AnyHistory,
+  createBrowserHistory,
+  createHashHistory,
 } from 'mobx-location-history';
 import { startTransition } from 'react';
 
@@ -13,27 +14,27 @@ import {
   RouterNavigateParams,
   RouterPath,
   RouterToConfig,
-  RouterType,
 } from './router.types.js';
 
-export class Router<THistory extends AnyHistory = AnyHistory>
+export class Router<THistory extends History = History>
   implements IRouter<THistory>
 {
   history: THistory;
-  location: THistory['location'];
   queryParams: IQueryParams;
   baseUrl: string | undefined;
-  type: RouterType;
 
   constructor(protected config: RouterConfig<THistory>) {
     this.baseUrl = config.baseUrl;
-    this.type = config.type ?? 'browser';
     this.history =
-      config.history ??
-      (new History({
-        abortSignal: config.abortSignal,
-      }) as unknown as THistory);
-    this.location = config.location ?? this.history.location;
+      config.history ?? (createBrowserHistory() as unknown as THistory);
+    if (config.history) {
+      this.history = config.history;
+    } else if (config.type === 'hash') {
+      this.history = createHashHistory() as unknown as THistory;
+    } else {
+      this.history = createBrowserHistory() as unknown as THistory;
+    }
+
     this.queryParams =
       config.queryParams ?? new QueryParams({ history: this.history });
   }
@@ -62,12 +63,16 @@ export class Router<THistory extends AnyHistory = AnyHistory>
     }
   }
 
-  createUrl(to: RouterToConfig, type?: RouterType): string {
+  get location() {
+    return this.history.location;
+  }
+
+  createUrl(to: RouterToConfig): string {
     const path = this.createPath(to);
 
     return [
       path.baseUrl,
-      type === 'hash' ? '#' : '',
+      this.config.type === 'hash' ? '#' : '',
       path.pathname,
       path.hash && `#${path.hash}`,
       path.search,
@@ -76,18 +81,15 @@ export class Router<THistory extends AnyHistory = AnyHistory>
 
   protected hashNavigate(to: RouterToConfig, options?: RouterNavigateParams) {
     const path = this.createPath(to);
-    const url = this.createUrl(
-      {
-        ...path,
-        // This is fixes bug with pathname endings /
-        // If location.pathname is /test-foo then after navigation to /test-foo#bar
-        // navigation back will not work
-        // If location.pathname is /test-foo/ then after navigation to /test-foo/#/bar
-        // navigation back will not work
-        baseUrl: this.location.pathname,
-      },
-      this.type,
-    );
+    const url = this.createUrl({
+      ...path,
+      // This is fixes bug with pathname endings /
+      // If location.pathname is /test-foo then after navigation to /test-foo#bar
+      // navigation back will not work
+      // If location.pathname is /test-foo/ then after navigation to /test-foo/#/bar
+      // navigation back will not work
+      baseUrl: this.location.pathname,
+    });
     const state = options?.state ?? null;
 
     this.wrapInViewTransition(() => {
@@ -101,7 +103,7 @@ export class Router<THistory extends AnyHistory = AnyHistory>
     options?: RouterNavigateParams,
   ) {
     const path = this.createPath(to);
-    const url = this.createUrl(path, this.type);
+    const url = this.createUrl(path);
     const state = options?.state ?? null;
 
     this.wrapInViewTransition(() => {
@@ -140,7 +142,7 @@ export class Router<THistory extends AnyHistory = AnyHistory>
   }
 
   navigate(to: RouterToConfig, options?: RouterNavigateParams): void {
-    if (this.type === 'hash') {
+    if (this.config.type === 'hash') {
       this.hashNavigate(to, options);
     } else {
       this.browserNavigate(to, options);
@@ -158,6 +160,6 @@ export class Router<THistory extends AnyHistory = AnyHistory>
  */
 export const MobxRouter = Router;
 
-export const createRouter = <THistory extends AnyHistory>(
+export const createRouter = <THistory extends History>(
   config: RouterConfig<THistory>,
 ) => new Router<THistory>(config);

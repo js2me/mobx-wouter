@@ -8,6 +8,7 @@ module.exports = {
       'error',
       { ignore: Object.keys(packageJson.peerDependencies) },
     ],
+    'sonarjs/deprecation': 'off'
   },
   overrides: [
     {
@@ -23,7 +24,8 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-this-alias': 'off',
         'react-hooks/rules-of-hooks': 'off',
-        'sonarjs/use-type-alias': 'off'
+        'sonarjs/use-type-alias': 'off',
+        'sonarjs/deprecation': 'off'
       },
       parserOptions: {
         project: 'tsconfig.test.json',

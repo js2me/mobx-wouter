@@ -1,36 +1,36 @@
-import { History, To } from 'mobx-location-history';
+import { createBrowserHistory, History } from 'mobx-location-history';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 import { Router } from './router.js';
-import {
-  RouterNavigateParams,
-  RouterToConfig,
-  RouterType,
-} from './router.types.js';
+import { RouterNavigateParams, RouterToConfig } from './router.types.js';
 
-export class HistoryMock extends History {
-  spies = {
-    push: vi.fn((to: To, state?: any) => super.push(to, state)),
-    replace: vi.fn((to: To, state?: any) => super.replace(to, state)),
+type RouterType = 'browser' | 'hash';
+
+export const mockHistory = (history: History) => {
+  const spies = {
+    push: vi.spyOn(history, 'push'),
+    replace: vi.spyOn(history, 'replace'),
   };
 
-  push(to: To, state?: any): void {
-    return this.spies.push(to, state);
-  }
+  const clearMocks = () => {
+    spies.push.mockClear();
+    spies.replace.mockClear();
+  };
 
-  replace(to: To, state?: any): void {
-    return this.spies.replace(to, state);
-  }
-}
+  return {
+    ...history,
+    spies,
+    clearMocks,
+  };
+};
 
 describe('router', () => {
-  const mockHistory = new HistoryMock();
+  const historyMock = mockHistory(createBrowserHistory());
 
   beforeEach(() => {
     history.replaceState(null, '', '/');
     location.hash = '';
-    mockHistory.spies.push.mockClear();
-    mockHistory.spies.replace.mockClear();
+    historyMock.clearMocks();
   });
 
   type NavigateTestConfig = {
@@ -500,7 +500,7 @@ describe('router', () => {
 
     test(testName, () => {
       const mockRouter = new Router({
-        history: mockHistory,
+        history: historyMock,
         type,
       });
 
@@ -509,10 +509,10 @@ describe('router', () => {
       expect(location.href).toBe(expectedHref);
 
       if (pushStateCalls != null) {
-        expect(mockHistory.spies.push).toHaveBeenCalledTimes(pushStateCalls);
+        expect(historyMock.spies.push).toHaveBeenCalledTimes(pushStateCalls);
       }
       if (replaceStateCalls != null) {
-        expect(mockHistory.spies.replace).toHaveBeenCalledTimes(
+        expect(historyMock.spies.replace).toHaveBeenCalledTimes(
           replaceStateCalls,
         );
       }
@@ -520,8 +520,11 @@ describe('router', () => {
         expect(location.search).toBe(expectedSearch);
       }
       if (args?.[1]?.state != null) {
-        expect(mockHistory.state).toStrictEqual(args[1].state);
-        expect(history.state).toStrictEqual(args[1].state);
+        expect(historyMock.location.state).toStrictEqual(args[1].state);
+        expect(history.state).toStrictEqual({
+          ...history.state,
+          usr: args[1].state,
+        });
       }
     });
   };

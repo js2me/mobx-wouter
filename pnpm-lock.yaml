@@ -12,8 +12,8 @@ importers:
         specifier: ^6.12.4
         version: 6.13.5
       mobx-location-history:
-        specifier: ^5.1.0
-        version: 5.1.0(mobx@6.13.5)
+        specifier: ^7.0.3
+        version: 7.0.3(mobx@6.13.5)
       mobx-react-lite:
         specifier: ^4.0.7
         version: 4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2081,6 +2081,9 @@ packages:
     resolution: {integrity: sha512-DoufbNNOFzwRPy8uecq+j+VCPQ+JyDelHTmSgygrA5TsR8Cbw4Qcir5sGtWiusB4BdT89nmlaVDhSJOqC/33vw==}
     hasBin: true
 
+  history@5.3.0:
+    resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
+
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
 
@@ -2471,8 +2474,8 @@ packages:
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
 
-  mobx-location-history@5.1.0:
-    resolution: {integrity: sha512-CATiYz8ZNszx2Vluun9KBywg9yZwXUt7VC7T+/RpzPJGiJfZ4sJcDz5w4bBPt2QCEaAxHK/3oj8mGymfo0d8oQ==}
+  mobx-location-history@7.0.3:
+    resolution: {integrity: sha512-K8ca9EKtf2z4+LxuOR5mUYGrpe8Veh+g8fLAEVsHJac/0KayroqiAXDDVXhQcVfnN+/aoK0D0CNZ5K9VceOSGA==}
     peerDependencies:
       mobx: ^6.13.3
 
@@ -3315,6 +3318,9 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  yummies@3.2.10:
+    resolution: {integrity: sha512-K2ksTjbdOtHvkIOyvfuc/BnwnZIOea0+JZxz1CGaltE8amCq8jOD36V7Jj/LcpT2hHwyzuFIahoDoH5STacGyQ==}
 
   yummies@3.2.6:
     resolution: {integrity: sha512-pUhwPPWqrL5U97wMz7achdTW83RvEylh1JAC5lKY9FQy5p5ObkuFkMKs72OANo9ogFlRNcHm1ISAWsqDSXnKYQ==}
@@ -5687,6 +5693,10 @@ snapshots:
 
   he@0.5.0: {}
 
+  history@5.3.0:
+    dependencies:
+      '@babel/runtime': 7.26.0
+
   hosted-git-info@2.8.9: {}
 
   html-encoding-sniffer@4.0.0:
@@ -6109,11 +6119,12 @@ snapshots:
 
   mitt@3.0.1: {}
 
-  mobx-location-history@5.1.0(mobx@6.13.5):
+  mobx-location-history@7.0.3(mobx@6.13.5):
     dependencies:
+      history: 5.3.0
       linked-abort-controller: 1.1.0
       mobx: 6.13.5
-      yummies: 3.2.6
+      yummies: 3.2.10
 
   mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -7033,6 +7044,15 @@ snapshots:
   yallist@3.1.1: {}
 
   yocto-queue@0.1.0: {}
+
+  yummies@3.2.10:
+    dependencies:
+      '@types/insane': 1.0.0
+      clsx: 2.1.1
+      dayjs: 1.11.13
+      insane: 2.6.2
+      nanoid: 5.1.5
+      tailwind-merge: 2.6.0
 
   yummies@3.2.6:
     dependencies:
