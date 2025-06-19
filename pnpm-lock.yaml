@@ -27,8 +27,8 @@ importers:
         specifier: ^3.3.5
         version: 3.3.5(react@18.3.1)
       yummies:
-        specifier: ^3.2.6
-        version: 3.2.6
+        specifier: ^4.0.0
+        version: 4.0.0
     devDependencies:
       '@testing-library/react':
         specifier: ^16.1.0
@@ -3322,8 +3322,8 @@ packages:
   yummies@3.2.10:
     resolution: {integrity: sha512-K2ksTjbdOtHvkIOyvfuc/BnwnZIOea0+JZxz1CGaltE8amCq8jOD36V7Jj/LcpT2hHwyzuFIahoDoH5STacGyQ==}
 
-  yummies@3.2.6:
-    resolution: {integrity: sha512-pUhwPPWqrL5U97wMz7achdTW83RvEylh1JAC5lKY9FQy5p5ObkuFkMKs72OANo9ogFlRNcHm1ISAWsqDSXnKYQ==}
+  yummies@4.0.0:
+    resolution: {integrity: sha512-JpjliqOySAE6lanYPzB0bY5CTyCtQjBdIVA/TR21UnYpkfxxr85soB7JRZnwZ8ZH69UqHOtuikdxt/uujoZ3xw==}
 
 snapshots:
 
@@ -6141,7 +6141,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-simple-loadable: 2.1.0(react@18.3.1)
-      yummies: 3.2.6
+      yummies: 3.2.10
 
   mobx@6.13.5: {}
 
@@ -7054,7 +7054,7 @@ snapshots:
       nanoid: 5.1.5
       tailwind-merge: 2.6.0
 
-  yummies@3.2.6:
+  yummies@4.0.0:
     dependencies:
       '@types/insane': 1.0.0
       clsx: 2.1.1
