@@ -27,24 +27,31 @@ Router for client navigation
 ### Usage   
 
 ```ts
-import { Router, Location, History, QueryParams } from "mobx-wouter";
+const history = createBrowserHistory();
+// const history = createMemoryHistory();
+// const history = createHashHistory();
 
-const router = new Router({
-  history: //, new Location()
-  queryParams: //, new QueryParams(),
-  abortSignal: //
-})
+const router = createRouter({
+  history,
+  // baseUrl
+  // abortSignal
+  // useStartViewTransition
+  queryParams: createQueryParams({
+    history,
+  }),
+});
+
 ```
 
 
-### [`Location`, `History`, `QueryParams` and etc](https://github.com/js2me/mobx-location-history)  
+### [`createBrowserHistory`, `createQueryParams` and etc](https://js2me.github.io/mobx-location-history)  
 
-Exports from [mobx-location-history](https://github.com/js2me/mobx-location-history)  
+Exports from [mobx-location-history](https://js2me.github.io/mobx-location-history)  
 
 
 ### [`PageViewModelBase`](src/page-view-model/page-view-model.base.ts), [`PageViewModel`](src/page-view-model/page-view-model.ts)   
 
-Simple [`ViewModel`](https://github.com/js2me/mobx-view-model?tab=readme-ov-file#mobx-view-model) wrapper for pages  
+Simple [`ViewModel`](https://js2me.github.io/mobx-view-model/api/view-models/interface.html) wrapper for pages  
 
 #### Usage:  
 

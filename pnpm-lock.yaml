@@ -12,8 +12,8 @@ importers:
         specifier: ^6.12.4
         version: 6.13.5
       mobx-location-history:
-        specifier: ^7.0.3
-        version: 7.0.3(mobx@6.13.5)
+        specifier: ^7.2.0
+        version: 7.2.0(mobx@6.13.5)
       mobx-react-lite:
         specifier: ^4.0.7
         version: 4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -27,8 +27,8 @@ importers:
         specifier: ^3.3.5
         version: 3.3.5(react@18.3.1)
       yummies:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.5.0
+        version: 4.5.0
     devDependencies:
       '@testing-library/react':
         specifier: ^16.1.0
@@ -1546,6 +1546,9 @@ packages:
     resolution: {integrity: sha512-HutrvTNsF48wnxkzERIXOe5/mlcfFcbfCmwcg6CJnizbSue78AbDt+1cgl26zwn61WFxhcPykPfZrbqjGmBb4A==}
     engines: {node: '>=8'}
 
+  class-variance-authority@0.7.1:
+    resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
+
   clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
     engines: {node: '>=4'}
@@ -2474,8 +2477,8 @@ packages:
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
 
-  mobx-location-history@7.0.3:
-    resolution: {integrity: sha512-K8ca9EKtf2z4+LxuOR5mUYGrpe8Veh+g8fLAEVsHJac/0KayroqiAXDDVXhQcVfnN+/aoK0D0CNZ5K9VceOSGA==}
+  mobx-location-history@7.2.0:
+    resolution: {integrity: sha512-0Ym5z5VbkPrVOuYby0XBzZ5P15wJLog1JBNiflbE8bgvFO8DYnWgFlD7uqVhRwq1ciUe6QdbCxTC8h+LrNYlFA==}
     peerDependencies:
       mobx: ^6.13.3
 
@@ -3322,8 +3325,8 @@ packages:
   yummies@3.2.10:
     resolution: {integrity: sha512-K2ksTjbdOtHvkIOyvfuc/BnwnZIOea0+JZxz1CGaltE8amCq8jOD36V7Jj/LcpT2hHwyzuFIahoDoH5STacGyQ==}
 
-  yummies@4.0.0:
-    resolution: {integrity: sha512-JpjliqOySAE6lanYPzB0bY5CTyCtQjBdIVA/TR21UnYpkfxxr85soB7JRZnwZ8ZH69UqHOtuikdxt/uujoZ3xw==}
+  yummies@4.5.0:
+    resolution: {integrity: sha512-uJtj9BnKaIP3l+Q3LJ0hp80AjZQ1Kzss0OS+lxOVGd0GuykQmJfv65Xyp+MHOF/5qOwH2HGgaFl0ogDASzRZgw==}
 
 snapshots:
 
@@ -4960,6 +4963,10 @@ snapshots:
 
   ci-info@4.1.0: {}
 
+  class-variance-authority@0.7.1:
+    dependencies:
+      clsx: 2.1.1
+
   clean-regexp@1.0.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -6119,12 +6126,12 @@ snapshots:
 
   mitt@3.0.1: {}
 
-  mobx-location-history@7.0.3(mobx@6.13.5):
+  mobx-location-history@7.2.0(mobx@6.13.5):
     dependencies:
       history: 5.3.0
       linked-abort-controller: 1.1.0
       mobx: 6.13.5
-      yummies: 3.2.10
+      yummies: 4.5.0
 
   mobx-react-lite@4.1.0(mobx@6.13.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -7054,9 +7061,10 @@ snapshots:
       nanoid: 5.1.5
       tailwind-merge: 2.6.0
 
-  yummies@4.0.0:
+  yummies@4.5.0:
     dependencies:
       '@types/insane': 1.0.0
+      class-variance-authority: 0.7.1
       clsx: 2.1.1
       dayjs: 1.11.13
       insane: 2.6.2
